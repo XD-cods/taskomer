@@ -9,45 +9,48 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @RestController
-@Transactional
 @RequiredArgsConstructor
 public class ProjectController {
+  private static final String SHOW_PROJECTS = "/api/projects";
+  private static final String DELETE_PROJECT = "/api/projects/{id}";
+  private static final String UPDATE_PROJECT = "/api/projects";
+  private static final String CREATE_PROJECT = "/api/projects";
   private final ProjectRepo projectRepo;
   private final ProjectMapper projectMapper;
 
-  public static final String SHOW_PROJECTS = "/api/projects";
-  public static final String DELETE_PROJECT = "/api/projects/{id}";
-  public static final String CREATE_OR_UPDATE_PROJECT = "/api/projects";
+  @PutMapping(CREATE_PROJECT)
+  @Transactional
+  public ProjectDTO createProject(@RequestParam("project_name") String projectName) {
+    Project project = Project.builder().projectName(projectName).build();
+    projectRepo.save(project);
+    return projectMapper.toDto(project);
+  }
 
-
-  @PostMapping(CREATE_OR_UPDATE_PROJECT)
+  @PatchMapping(UPDATE_PROJECT)
+  @Transactional
   public ProjectDTO updateProject(@RequestParam("project_name") String projectName,
-                                  @RequestParam(value = "project_id", required = false) Optional<Long> projectId) {
-
-    Project project = projectId
-            .map(id -> projectRepo.findById(id).get())
-            .orElseGet(() -> Project.builder()
-                    .createdAt(Instant.now())
-                    .build());
-
+                                  @RequestParam(value = "project_id") Long projectId) {
+    Project project = projectRepo.findById(projectId)
+            .orElseThrow(() -> new NotFoundException("Project with id" + projectId + " found"));
     project.setProjectName(projectName);
     return projectMapper.toDto(projectRepo.save(project));
   }
 
 
   @GetMapping(SHOW_PROJECTS)
+  @Transactional
   public List<ProjectDTO> getAllProjects(
           @RequestParam(value = "prefix_name", required = false) Optional<String> optionalPrefixName) {
 
@@ -64,6 +67,7 @@ public class ProjectController {
 
 
   @DeleteMapping(DELETE_PROJECT)
+  @Transactional
   public Boolean deleteProject(@PathVariable("id") Long id) {
     Project project = projectRepo.findById(id)
             .orElseThrow(() -> new NotFoundException("Project not found"));
@@ -71,6 +75,4 @@ public class ProjectController {
     projectRepo.delete(project);
     return Boolean.TRUE;
   }
-
-
 }

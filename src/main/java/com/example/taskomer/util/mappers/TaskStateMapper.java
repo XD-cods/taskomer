@@ -9,8 +9,10 @@ public class TaskStateMapper {
   public TaskStateDTO toTaskStateDTO(TaskState taskState) {
     return TaskStateDTO.builder()
             .id(taskState.getId())
-            .title(taskState.getStateName())
+            .stateName(taskState.getStateName())
             .createdAt(taskState.getCreatedAt())
+            .leftTaskStateId(taskState.getLeftTaskState() == null ? null : taskState.getLeftTaskState().getId())
+            .rightTaskStateId(taskState.getRightTaskState() == null ? null : taskState.getRightTaskState().getId())
             .build();
   }
 }

@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
@@ -20,11 +19,15 @@ import java.time.Instant;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProjectDTO implements Serializable {
+
   @NonNull
   private Long id;
+
   @NonNull
+  @JsonProperty("project_name")
   private String projectName;
-  @JsonProperty("created_at")
+
   @NonNull
+  @JsonProperty("created_at")
   private Instant createdAt;
 }

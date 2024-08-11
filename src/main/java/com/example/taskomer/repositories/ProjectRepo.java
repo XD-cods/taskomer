@@ -10,6 +10,8 @@ import java.util.stream.Stream;
 @Repository
 public interface ProjectRepo extends JpaRepository<Project, Long> {
   Optional<Project> findByProjectName(String projectName);
+
   Stream<Project> streamAllBy();
+
   Stream<Project> streamAllByProjectNameStartsWithIgnoreCase(String projectName);
 }

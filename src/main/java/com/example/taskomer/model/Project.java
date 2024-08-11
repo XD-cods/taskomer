@@ -1,5 +1,6 @@
 package com.example.taskomer.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,9 +16,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
 
 @Getter
 @Setter
@@ -26,17 +26,21 @@ import java.util.function.Supplier;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(schema = "taskomer",name = "project")
+@Table(schema = "taskomer", name = "project")
 public class Project {
+
   @Id
   @Column(name = "project_id", nullable = false)
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Column(nullable = false)
+
   private String projectName;
-  @Column(nullable = false)
+
+  @Builder.Default
   private Instant createdAt = Instant.now();
-  @OneToMany
-  @JoinColumn(name = "project_id", nullable = false)
-  private List<TaskState> taskStates;
+
+  @OneToMany(cascade = CascadeType.ALL)
+  @Builder.Default
+  @JoinColumn(name = "project_id")
+  private List<TaskState> taskStates = new ArrayList<>();
 }
