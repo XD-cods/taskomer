@@ -8,7 +8,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,11 +38,9 @@ public class TaskState {
   @Builder.Default
   private Instant createdAt = Instant.now();
 
-  @OneToOne
-  private TaskState leftTaskState;
+  private Long leftTaskStateId;
 
-  @OneToOne
-  private TaskState rightTaskState;
+  private Long rightTaskStateId;
 
   @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "state_id")

@@ -33,7 +33,11 @@ public class ProjectController {
   @PutMapping(CREATE_PROJECT)
   @Transactional
   public ProjectDTO createProject(@RequestParam("project_name") String projectName) {
-    Project project = Project.builder().projectName(projectName).build();
+
+    Project project = Project.builder()
+            .projectName(projectName)
+            .build();
+
     projectRepo.save(project);
     return projectMapper.toDto(project);
   }
@@ -42,8 +46,10 @@ public class ProjectController {
   @Transactional
   public ProjectDTO updateProject(@RequestParam("project_name") String projectName,
                                   @RequestParam(value = "project_id") Long projectId) {
+
     Project project = projectRepo.findById(projectId)
             .orElseThrow(() -> new NotFoundException("Project with id" + projectId + " found"));
+
     project.setProjectName(projectName);
     return projectMapper.toDto(projectRepo.save(project));
   }
@@ -69,6 +75,7 @@ public class ProjectController {
   @DeleteMapping(DELETE_PROJECT)
   @Transactional
   public Boolean deleteProject(@PathVariable("id") Long id) {
+
     Project project = projectRepo.findById(id)
             .orElseThrow(() -> new NotFoundException("Project not found"));
 

@@ -11,8 +11,8 @@ public class TaskStateMapper {
             .id(taskState.getId())
             .stateName(taskState.getStateName())
             .createdAt(taskState.getCreatedAt())
-            .leftTaskStateId(taskState.getLeftTaskState() == null ? null : taskState.getLeftTaskState().getId())
-            .rightTaskStateId(taskState.getRightTaskState() == null ? null : taskState.getRightTaskState().getId())
+            .leftTaskStateId(taskState.getLeftTaskStateId())
+            .rightTaskStateId(taskState.getRightTaskStateId())
             .build();
   }
 }
