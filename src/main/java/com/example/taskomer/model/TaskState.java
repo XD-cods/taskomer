@@ -38,12 +38,15 @@ public class TaskState {
   @Builder.Default
   private Instant createdAt = Instant.now();
 
+  @Builder.Default
+  private Instant updatedAt = Instant.now();
+
   private Long leftTaskStateId;
 
   private Long rightTaskStateId;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  @JoinColumn(name = "state_id")
   @Builder.Default
+  @JoinColumn(name = "state_id")
+  @OneToMany(cascade = CascadeType.ALL)
   private List<Task> tasks = new ArrayList<>();
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -126,6 +127,7 @@ public class TaskStateController {
             .orElseThrow(() -> new NotFoundException("Project with id " + id + " not found"));
 
     taskState.setStateName(stateName);
+    taskState.setUpdatedAt(Instant.now());
     return taskStateMapper.toTaskStateDTO(stateRepo.save(taskState));
   }
 
@@ -173,6 +175,8 @@ public class TaskStateController {
       taskState.setRightTaskStateId(anotherRightStateId.orElse(null));
     }
 
+    taskState.setUpdatedAt(Instant.now());
+    anotherState.setUpdatedAt(Instant.now());
     projectRepo.save(project);
     return Boolean.TRUE;
   }

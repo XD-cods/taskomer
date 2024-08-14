@@ -27,6 +27,10 @@ public class TaskStateDTO {
   private String stateName;
 
   @NonNull
+  @JsonProperty("updated_at")
+  private Instant updatedAt;
+
+  @NonNull
   @JsonProperty("created_at")
   private Instant createdAt;
 

@@ -9,6 +9,7 @@ public class ProjectMapper {
   public ProjectDTO toDto(Project project) {
     return ProjectDTO.builder()
             .projectName(project.getProjectName())
+            .updatedAt(project.getUpdatedAt())
             .id(project.getId())
             .createdAt(project.getCreatedAt())
             .build();

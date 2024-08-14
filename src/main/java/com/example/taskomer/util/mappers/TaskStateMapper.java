@@ -11,6 +11,7 @@ public class TaskStateMapper {
             .id(taskState.getId())
             .stateName(taskState.getStateName())
             .createdAt(taskState.getCreatedAt())
+            .updatedAt(taskState.getUpdatedAt())
             .leftTaskStateId(taskState.getLeftTaskStateId())
             .rightTaskStateId(taskState.getRightTaskStateId())
             .build();

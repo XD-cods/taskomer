@@ -29,6 +29,10 @@ public class TaskDTO {
   private String description;
 
   @NonNull
+  @JsonProperty("updated_at")
+  private Instant updatedAt;
+
+  @NonNull
   @JsonProperty("created_at")
   private Instant createdAt;
 }

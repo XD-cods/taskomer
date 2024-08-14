@@ -28,6 +28,10 @@ public class ProjectDTO implements Serializable {
   private String projectName;
 
   @NonNull
+  @JsonProperty("updated_at")
+  private Instant updatedAt;
+
+  @NonNull
   @JsonProperty("created_at")
   private Instant createdAt;
 }

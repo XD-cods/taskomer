@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -51,6 +52,7 @@ public class ProjectController {
             .orElseThrow(() -> new NotFoundException("Project with id" + projectId + " found"));
 
     project.setProjectName(projectName);
+    project.setUpdatedAt(Instant.now());
     return projectMapper.toDto(projectRepo.save(project));
   }
 

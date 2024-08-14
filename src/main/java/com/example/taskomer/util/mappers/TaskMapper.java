@@ -13,6 +13,7 @@ public class TaskMapper {
             .taskName(task.getTaskName())
             .description(task.getDescription())
             .createdAt(task.getCreatedAt())
+            .updatedAt(task.getUpdatedAt())
             .build();
   }
 }

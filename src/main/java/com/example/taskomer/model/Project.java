@@ -39,8 +39,11 @@ public class Project {
   @Builder.Default
   private Instant createdAt = Instant.now();
 
-  @OneToMany(cascade = CascadeType.ALL)
   @Builder.Default
+  private Instant updatedAt = Instant.now();
+
+  @Builder.Default
+  @OneToMany(cascade = CascadeType.ALL)
   @JoinColumn(name = "project_id")
   private List<TaskState> taskStates = new ArrayList<>();
 }
