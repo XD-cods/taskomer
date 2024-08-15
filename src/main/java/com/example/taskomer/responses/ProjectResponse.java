@@ -1,4 +1,4 @@
-package com.example.taskomer.DTO;
+package com.example.taskomer.responses;
 
 import com.example.taskomer.model.Project;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -18,7 +18,7 @@ import java.time.Instant;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjectDTO implements Serializable {
+public class ProjectResponse implements Serializable {
 
   @NonNull
   private Long id;

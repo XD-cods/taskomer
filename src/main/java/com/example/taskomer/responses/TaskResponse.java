@@ -1,4 +1,4 @@
-package com.example.taskomer.DTO;
+package com.example.taskomer.responses;
 
 import com.example.taskomer.model.Task;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,7 +17,7 @@ import java.time.Instant;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class TaskDTO {
+public class TaskResponse {
 
   @NonNull
   private Long id;
