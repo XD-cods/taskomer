@@ -9,5 +9,6 @@ import java.util.stream.Stream;
 @Repository
 public interface TaskRepo extends JpaRepository<Task, Long> {
   Stream<Task> streamAllBy();
+
   Stream<Task> streamAllByTaskNameIgnoreCaseStartingWith(String taskName);
 }

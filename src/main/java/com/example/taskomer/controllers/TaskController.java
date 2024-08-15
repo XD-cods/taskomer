@@ -36,7 +36,7 @@ public class TaskController {
   public TaskResponse createTask(@PathVariable("state_id") Long stateId,
                                  @RequestParam("task_name") String taskName,
                                  @RequestParam(value = "task_description", required = false)
-                            Optional<String> optionalTaskDescription) {
+                                 Optional<String> optionalTaskDescription) {
 
     return taskService.createTask(stateId, taskName, optionalTaskDescription);
   }
@@ -45,7 +45,7 @@ public class TaskController {
   public TaskResponse updateTask(@PathVariable("task_id") Long taskId,
                                  @RequestParam(value = "task_name", required = false) Optional<String> taskName,
                                  @RequestParam(value = "task_description", required = false)
-                            Optional<String> taskDescription) {
+                                 Optional<String> taskDescription) {
 
     return taskService.updateTask(taskId, taskName, taskDescription);
   }

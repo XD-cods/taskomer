@@ -1,12 +1,12 @@
 package com.example.taskomer.services;
 
-import com.example.taskomer.responses.TaskStateResponse;
 import com.example.taskomer.exceptions.BadRequestException;
 import com.example.taskomer.exceptions.NotFoundException;
 import com.example.taskomer.model.Project;
 import com.example.taskomer.model.TaskState;
 import com.example.taskomer.repositories.ProjectRepo;
 import com.example.taskomer.repositories.TaskStateRepo;
+import com.example.taskomer.responses.TaskStateResponse;
 import com.example.taskomer.util.mappers.TaskStateMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

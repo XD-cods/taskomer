@@ -1,7 +1,7 @@
 package com.example.taskomer.util.mappers;
 
-import com.example.taskomer.responses.TaskStateResponse;
 import com.example.taskomer.model.TaskState;
+import com.example.taskomer.responses.TaskStateResponse;
 import org.springframework.stereotype.Component;
 
 @Component

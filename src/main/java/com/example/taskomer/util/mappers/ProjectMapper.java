@@ -1,7 +1,7 @@
 package com.example.taskomer.util.mappers;
 
-import com.example.taskomer.responses.ProjectResponse;
 import com.example.taskomer.model.Project;
+import com.example.taskomer.responses.ProjectResponse;
 import org.springframework.stereotype.Component;
 
 @Component

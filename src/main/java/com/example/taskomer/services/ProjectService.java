@@ -1,10 +1,10 @@
 package com.example.taskomer.services;
 
 
-import com.example.taskomer.responses.ProjectResponse;
 import com.example.taskomer.exceptions.NotFoundException;
 import com.example.taskomer.model.Project;
 import com.example.taskomer.repositories.ProjectRepo;
+import com.example.taskomer.responses.ProjectResponse;
 import com.example.taskomer.util.mappers.ProjectMapper;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
