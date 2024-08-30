@@ -40,7 +40,6 @@ public class TaskService {
             .collect(Collectors.toList());
   }
 
-
   @Transactional
   public TaskResponse createTask(Long stateId, String taskName, Optional<String> optionalTaskDescription) {
 

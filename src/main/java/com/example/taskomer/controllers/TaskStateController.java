@@ -46,14 +46,12 @@ public class TaskStateController {
     return taskStateService.createTaskState(stateName, projectId);
   }
 
-
   @PatchMapping(UPDATE_TASK_STATE)
   public TaskStateResponse updateTaskState(@PathVariable Long id,
                                            @RequestParam("state_name") String stateName) {
 
     return taskStateService.updateTaskState(id, stateName);
   }
-
 
   @PatchMapping(CHANGE_STATE_POSITION)
   public Boolean changeStatePosition(@PathVariable("project_id") Long projectId,

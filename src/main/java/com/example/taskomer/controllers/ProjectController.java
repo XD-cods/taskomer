@@ -38,7 +38,6 @@ public class ProjectController {
     return projectService.updateProject(projectName, projectId);
   }
 
-
   @GetMapping(SHOW_PROJECTS)
   @Transactional
   public List<ProjectResponse> getAllProjects(
@@ -46,7 +45,6 @@ public class ProjectController {
 
     return projectService.getAllProjects(optionalPrefixName);
   }
-
 
   @DeleteMapping(DELETE_PROJECT)
   @Transactional

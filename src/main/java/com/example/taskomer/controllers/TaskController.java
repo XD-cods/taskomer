@@ -31,7 +31,6 @@ public class TaskController {
     return taskService.showTasks(optionalPrefixName);
   }
 
-
   @PutMapping(CREATE_TASK)
   public TaskResponse createTask(@PathVariable("state_id") Long stateId,
                                  @RequestParam("task_name") String taskName,

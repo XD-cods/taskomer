@@ -99,7 +99,6 @@ public class TaskStateService {
     return taskStateMapper.toResponse(taskState);
   }
 
-
   @Transactional
   public TaskStateResponse updateTaskState(Long id, String stateName) {
 
@@ -110,7 +109,6 @@ public class TaskStateService {
     taskState.setUpdatedAt(Instant.now());
     return taskStateMapper.toResponse(stateRepo.save(taskState));
   }
-
 
   @Transactional
   public Boolean changeStatePosition(Long projectId, Long stateId, Long anotherStateId) {

@@ -31,10 +31,10 @@ public class User {
   @Column(unique = true, nullable = false)
   private String name;
 
-  @Column(unique = true, nullable = false)
+  @Column(nullable = false)
   private String password;
 
   @Enumerated(EnumType.STRING)
   @Builder.Default
-  private Role role = Role.ROLE_USER;
+  private Role role = Role.USER;
 }

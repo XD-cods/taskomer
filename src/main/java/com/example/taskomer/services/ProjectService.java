@@ -44,7 +44,6 @@ public class ProjectService {
     return projectMapper.toResponse(projectRepo.save(project));
   }
 
-
   @Transactional
   public List<ProjectResponse> getAllProjects(Optional<String> optionalPrefixName) {
 
